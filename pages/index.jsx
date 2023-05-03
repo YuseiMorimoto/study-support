@@ -1,7 +1,7 @@
 import { Inter } from "next/font/google";
 import { Main } from "@/components/Main";
 import { Header } from "@/components/Header";
-import { useCallback } from "react";
+import { useCallback, useEffect } from "react";
 import Link from "next/link";
 const inter = Inter({ subsets: ["latin"] });
 
@@ -10,6 +10,16 @@ export default function Home() {
     e.preventDefault();
     // alert(123);
   });
+
+  // マウント時の処理
+  useEffect(() => {
+    console.log("マウント時");
+
+    // アンマウント時
+    return () => {
+      console.log("アンマウント時");
+    };
+  }, []);
 
   return (
     <div>
