@@ -7,12 +7,19 @@ import { useBgSkyblue } from "@/hooks/useBgSkyblue";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export default function About() {
+export default function About(props) {
   // カスタムフックはreturn文よりも前、トップレベルで呼び出す必要がある。ルールを確認する
   // コンポーネントよりもUIの自由度が高い。
-  const { count, isShow, handleClick, handleDisplay } = useCounter();
-  const { text, array, handleChange, handleAdd } = useInputArray();
-  useBgSkyblue();
+  const {
+    count,
+    isShow,
+    handleClick,
+    handleDisplay,
+    text,
+    array,
+    handleChange,
+    handleAdd,
+  } = props;
 
   return (
     <div>
