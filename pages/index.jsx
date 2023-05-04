@@ -10,6 +10,8 @@ export default function Home() {
   // setStateの中は関数で書く
   // 必ず関数を利用する必要はない。
   const [count, setCount] = useState(1);
+  const [text, setText] = useState("");
+  const [isShow, setIsShow] = useState(true);
 
   const handleClick = useCallback(
     (e) => {
@@ -20,6 +22,20 @@ export default function Home() {
     },
     [count]
   );
+
+  const handleDisplay = useCallback(() => {
+    // returnだけの場合は省略できる。
+    // !を使うことでtrueとfalseを入れ替えている。
+    setIsShow((isShow) => !isShow);
+  }, []);
+
+  const handleChange = useCallback((e) => {
+    if (e.target.value.length > 5) {
+      alert("5文字にしてください。");
+      return;
+    }
+    setText(e.target.value.trim());
+  }, []);
 
   // マウント時の処理
   useEffect(() => {
@@ -34,10 +50,12 @@ export default function Home() {
   return (
     <div>
       <Header />
-      <h1 className="text-center">{count}</h1>
+      {isShow ? <h1 className="text-center">{count}</h1> : null}
       <button className="content-center" onClick={handleClick}>
         ボタン
       </button>
+      <button onClick={handleDisplay}>{isShow ? "非表示" : "表示"}</button>
+      <input type="text" value={text} onChange={handleChange} />
       <Main page="index" />;
     </div>
   );
