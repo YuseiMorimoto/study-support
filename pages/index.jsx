@@ -17,7 +17,7 @@ export default function Home() {
     (e) => {
       console.log(count);
       if (count < 10) {
-        setCount((count) => count + 1);
+        setCount((prevCount) => prevCount + 1);
       }
     },
     [count]
@@ -26,7 +26,7 @@ export default function Home() {
   const handleDisplay = useCallback(() => {
     // returnだけの場合は省略できる。
     // !を使うことでtrueとfalseを入れ替えている。
-    setIsShow((isShow) => !isShow);
+    setIsShow((prevIsShow) => !prevIsShow);
   }, []);
 
   const handleChange = useCallback((e) => {
