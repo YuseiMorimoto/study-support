@@ -1,9 +1,18 @@
-import { useCallback, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
+
+// コンポーネント内の処理は全てuseCallbackあるいはuseMemo
+// を使っても良い。関数ならuseCallback
+// エンジニア自身で再生成させるべきかそうでないかを考えられるように
+// 意識づけするためにも全てに使うことはあり。
 
 // カウントに関する処理。
 export const useCounter = () => {
   const [count, setCount] = useState(1);
   const [isShow, setIsShow] = useState(true);
+
+  const doubleCount = useMemo(() => {
+    return count * 2;
+  }, [count]);
 
   const handleClick = useCallback(
     (e) => {
@@ -20,5 +29,5 @@ export const useCounter = () => {
     setIsShow((prevIsShow) => !prevIsShow);
   }, []);
 
-  return { count, isShow, handleClick, handleDisplay };
+  return { count, doubleCount, isShow, handleClick, handleDisplay };
 };

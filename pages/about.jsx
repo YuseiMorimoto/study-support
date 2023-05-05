@@ -11,7 +11,7 @@ export default function About(props) {
   // カスタムフックはreturn文よりも前、トップレベルで呼び出す必要がある。ルールを確認する
   // コンポーネントよりもUIの自由度が高い。
   const {
-    count,
+    doubleCount,
     isShow,
     handleClick,
     handleDisplay,
@@ -24,7 +24,7 @@ export default function About(props) {
   return (
     <div>
       <Header />
-      {isShow ? <h1 className="text-center">{count}</h1> : null}
+      {isShow ? <h1 className="text-center">{doubleCount}</h1> : null}
       <button className="content-center" onClick={handleClick}>
         ボタン
       </button>
