@@ -3,7 +3,7 @@ import { Main } from "@/components/Main";
 import { Header } from "@/components/Header";
 import { useCounter } from "@/hooks/useCounter";
 import { useInputArray } from "@/hooks/useInputArray";
-import { useBgSkyblue } from "@/hooks/useBgSkyblue";
+import { useBgSkyblue } from "@/hooks/useBgColor";
 
 const inter = Inter({ subsets: ["latin"] });
 
