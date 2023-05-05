@@ -6,10 +6,10 @@ const inter = Inter({ subsets: ["latin"] });
 // データと処理の部分を分ける。
 // mapは一意のkeyを持たせる。
 
-export function Links({ items }) {
+export const Links = (props) => {
   return (
     <div>
-      {items.map((item) => {
+      {props.items.map((item) => {
         return (
           <a
             key={item.href}
@@ -32,4 +32,4 @@ export function Links({ items }) {
       })}
     </div>
   );
-}
+};

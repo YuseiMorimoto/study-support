@@ -1,18 +1,22 @@
 import { Inter } from "next/font/google";
 import Link from "next/link";
-
 const inter = Inter({ subsets: ["latin"] });
 
-export function Header() {
-  return (
-    <div className="">
-      <header className="">
-        <Link href="/" className="border-b-2 border-slate-800 ">
-          Index
-        </Link>
+const NAV_ITEMS = [
+  { href: "/", label: "Index" },
+  { href: "/about", label: "About" },
+];
 
-        <Link href="/about">About</Link>
-      </header>
-    </div>
+export const Header = () => {
+  return (
+    <header className="">
+      {NAV_ITEMS.map((item) => {
+        return (
+          <Link key={item.href} href={item.href}>
+            {item.label}
+          </Link>
+        );
+      })}
+    </header>
   );
-}
+};
